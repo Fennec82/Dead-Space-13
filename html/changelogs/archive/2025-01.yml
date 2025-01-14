@@ -1,0 +1,12 @@
+2025-01-01:
+  Kapu1178:
+  - qol: You can now take paddles from a defibrillator at any time.
+  - qol: You can use AltClick to take paddles from a defibrillator.
+  - qol: You can use the Toggle Paddles verb to take paddles from a defibrillator.
+  - qol: You can now use the Use In Hand keybind to wield/unwield paddles (Restoring
+      old behavior).
+  - bugfix: Fixed a bug relating to defibrillators and phone handsets.
+2025-01-14:
+  Kapu1178:
+  - tweak: Cyborgs spawn on the station.
+  - qol: AI can now see their own eye.
