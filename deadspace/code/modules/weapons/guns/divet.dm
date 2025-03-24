@@ -140,7 +140,7 @@ Projectiles for the casings
 	name = "divet bullet"
 	icon = 'deadspace/icons/obj/projectiles.dmi'
 	icon_state = "divet"
-	damage = 17.5
+	damage = 14
 	armor_penetration = 10
 	wound_falloff_tile = -10
 	dismemberment = 5
@@ -150,7 +150,7 @@ Projectiles for the casings
 /obj/projectile/bullet/divet/hp
 	name = "divet hollow-point bullet"
 	icon_state = "divet_hp"
-	damage = 22.5
+	damage = 20
 	armor_penetration = 0
 	weak_against_armor = TRUE
 
@@ -158,14 +158,14 @@ Projectiles for the casings
 /obj/projectile/bullet/divet/ap
 	name = "divet armor-piercing bullet"
 	icon_state = "divet_ap"
-	damage = 15
+	damage = 17
 	armor_penetration = 20
 
 //Less lethal ammo. Rubber bullets, now with bounce!
 /obj/projectile/bullet/divet/rb
 	name = "divet rubber bullet"
 	icon_state = "divet" //Maybe get rubber bullet sprite in future
-	damage = 6
+	damage = 4
 	stamina = 30
 	weak_against_armor = TRUE
 	ricochets_max = 6
@@ -182,7 +182,7 @@ Projectiles for the casings
 	name = "divet incendiary bullet"
 	icon = 'deadspace/icons/obj/projectiles.dmi'
 	icon_state = "divet_incend"
-	damage = 12.5
+	damage = 13
 	armor_penetration = 5
 	fire_stacks = 1
 

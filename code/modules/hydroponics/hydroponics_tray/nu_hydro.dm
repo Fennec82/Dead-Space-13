@@ -42,6 +42,8 @@
 	/// Are we using an irrigation system.
 	var/using_irrigation = FALSE
 
+	biomass_produce = BIOMASS_HARVEST_MEDIUM
+
 /obj/machinery/hydroponics/Initialize(mapload)
 	create_reagents(100)
 	. = ..()

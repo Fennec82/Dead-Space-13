@@ -21,7 +21,7 @@
 	cold_discomfort_level = -(INFINITY)
 	///We don't process reagents
 	reagent_flags = NONE
-	no_equip = list(
+	no_equip_flags = list(
 		ITEM_SLOT_OCLOTHING,
 		ITEM_SLOT_ICLOTHING,
 		ITEM_SLOT_GLOVES,

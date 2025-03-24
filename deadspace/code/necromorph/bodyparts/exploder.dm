@@ -32,7 +32,7 @@
 	w_class = WEIGHT_CLASS_BULKY //But we don't want to store it
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
-	max_damage = 40
+	max_damage = 25
 	px_x = -2
 	px_y = 12
 	wound_resistance = 0

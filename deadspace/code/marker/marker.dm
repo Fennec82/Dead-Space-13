@@ -136,7 +136,7 @@
 		if(QDELETED(marker))
 			return
 		var/mob/camera/marker_signal/eye = new(get_turf(marker), marker)
-		eye.ckey = src.ckey
+		eye.PossessByPlayer(src.ckey)
 
 /obj/structure/marker/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

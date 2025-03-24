@@ -18,8 +18,8 @@
 #define FLUIDLOSS_BURN_REQUIRED 5
 
 //CONFIG STUFF
-///A modifier applied to wound auto healing
-#define WOUND_REGENERATION_MODIFIER 0.25
+/// How much wound damage is healed per second if the wound is able to autoheal.
+#define WOUND_AUTOHEAL_RATE 0.1
 
 #define WOUND_BLEED_RATE(wound) (round(wound.damage / 60, DAMAGE_PRECISION))
 
@@ -41,6 +41,6 @@
 #define BLEEDING_MESSAGE_BASE_CD (10 SECONDS)
 
 ///The percentage of damage at which a bodypart can start to be dismembered.
-#define LIMB_DISMEMBERMENT_PERCENT 0.9
+#define LIMB_DISMEMBERMENT_PERCENT 0.85
 ///The percentage of max_damage that a limb will automatically be dismembered at
-#define LIMB_AUTODISMEMBER_PERCENT 6 // 600%
+#define LIMB_AUTODISMEMBER_PERCENT 2 // 200%

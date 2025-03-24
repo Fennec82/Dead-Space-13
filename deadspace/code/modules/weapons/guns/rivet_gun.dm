@@ -51,7 +51,7 @@ Ammo casings for the mags
 	name = "rivet bullet"
 	icon = 'deadspace/icons/obj/projectiles.dmi'
 	icon_state = "rivet"
-	damage = 13.125
+	damage = 12
 	armor_penetration = 10
 	wound_falloff_tile = -10
 	dismemberment = 5

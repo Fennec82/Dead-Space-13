@@ -83,6 +83,6 @@ Projectiles for the casings
 	name = "javelin"
 	icon = 'deadspace/icons/obj/projectiles.dmi'
 	icon_state = "javelin_flight"
-	damage = 60
+	damage = 55
 	armor_penetration = 50
 	embedding = list(embed_chance=100, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)

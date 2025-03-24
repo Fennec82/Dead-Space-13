@@ -27,7 +27,7 @@
 	icon_state = "l_arm"
 	attack_verb_continuous = list("slashes", "stabs")
 	attack_verb_simple = list("slash", "stab")
-	max_damage = 22
+	max_damage = 25
 	px_x = -6
 	px_y = 0
 	wound_resistance = -3
@@ -40,7 +40,7 @@
 	icon_state = "r_arm"
 	attack_verb_continuous = list("slashes", "stabs")
 	attack_verb_simple = list("slash", "stab")
-	max_damage = 22
+	max_damage = 25
 	px_x = 6
 	px_y = 0
 	wound_resistance = -3

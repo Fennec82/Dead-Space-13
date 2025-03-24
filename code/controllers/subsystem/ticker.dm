@@ -42,7 +42,6 @@ SUBSYSTEM_DEF(ticker)
 	var/admin_delay_notice = "" //a message to display to anyone who tries to restart the world after a delay
 	var/ready_for_reboot = FALSE //all roundend preparation done with, all that's left is reboot
 
-	var/tipped = FALSE //Did we broadcast the tip of the day yet?
 	var/selected_tip // What will be the tip of the day?
 
 	var/timeLeft //pregame timer
@@ -132,9 +131,11 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_STARTUP)
 			if(Master.initializations_finished_with_no_players_logged_in)
 				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
+
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
-			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
+				to_chat(C, systemtext("WELCOME, [uppertext(C.ckey)]"))
+
 			var/newround_staple = CONFIG_GET(string/chat_newgame_staple)
 			send2chat("New round starting on [SSmapping.config.map_name][newround_staple ? ", [newround_staple]" : null]!", CONFIG_GET(string/chat_announce_new_game))
 			current_state = GAME_STATE_PREGAME
@@ -197,10 +198,6 @@ SUBSYSTEM_DEF(ticker)
 				return
 			timeLeft -= wait
 
-			if(timeLeft <= 300 && !tipped)
-				send_tip_of_the_round(world, selected_tip)
-				tipped = TRUE
-
 			if(timeLeft <= 0)
 				SEND_SIGNAL(src, COMSIG_TICKER_ENTER_SETTING_UP)
 				current_state = GAME_STATE_SETTING_UP
@@ -233,7 +230,7 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/setup()
-	to_chat(world, span_boldannounce("Starting game..."))
+	to_chat(world, systemtext("Starting game..."))
 	var/init_start = world.timeofday
 
 	ready_players = list() // This needs to be reset every setup, incase the gamemode fails to start.
@@ -246,7 +243,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!initialize_gamemode())
 		return FALSE
 
-	to_chat(world, span_boldannounce("The gamemode is: [get_mode_name()]."))
+	to_chat(world, systemtext("The gamemode is: [get_mode_name()]."))
 	if(mode_display_name)
 		message_admins("The real gamemode is: [get_mode_name(TRUE)].")
 	to_chat(world, "<br><hr><br>")
@@ -306,6 +303,7 @@ SUBSYSTEM_DEF(ticker)
 	mode.setup_antags()
 	PostSetup()
 	SSticker.ready_players = null
+	SSlobby.game_status?.alpha = 0
 	return TRUE
 
 /datum/controller/subsystem/ticker/proc/PostSetup()
@@ -548,7 +546,6 @@ SUBSYSTEM_DEF(ticker)
 
 	delay_end = SSticker.delay_end
 
-	tipped = SSticker.tipped
 	selected_tip = SSticker.selected_tip
 
 	timeLeft = SSticker.timeLeft
@@ -655,10 +652,10 @@ SUBSYSTEM_DEF(ticker)
 
 	var/skip_delay = check_rights()
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boldannounce("An admin has delayed the round end."))
+		to_chat(world, systemtext("An admin has delayed the round end."))
 		return
 
-	to_chat(world, span_boldannounce("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
+	to_chat(world, systemtext("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/roll_credits_in = CONFIG_GET(number/eor_credits_delay) * 10
 	if(roll_credits)
@@ -672,7 +669,7 @@ SUBSYSTEM_DEF(ticker)
 	sleep(delay - (world.time - start_wait))
 
 	if(delay_end && !skip_delay)
-		to_chat(world, span_boldannounce("Reboot was cancelled by an admin."))
+		to_chat(world, systemtext("Reboot was cancelled by an admin."))
 		return
 	if(end_string)
 		end_state = end_string
@@ -684,7 +681,7 @@ SUBSYSTEM_DEF(ticker)
 	else if(gamelogloc)
 		to_chat(world, span_info("Round logs can be located <a href=\"[gamelogloc]\">at this website!</a>"))
 
-	log_game(span_boldannounce("Rebooting World. [reason]"))
+	log_game(systemtext("Rebooting World. [reason]"))
 
 	world.Reboot()
 

@@ -27,7 +27,7 @@
 	icon_state = "l_arm"
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
-	max_damage = 60
+	max_damage = 45
 	px_x = -2
 	px_y = 12
 	wound_resistance = 1
@@ -40,7 +40,7 @@
 	icon_state = "r_arm"
 	attack_verb_continuous = list("kicks", "stomps")
 	attack_verb_simple = list("kick", "stomp")
-	max_damage = 55
+	max_damage = 35
 	px_x = 2
 	px_y = 12
 	wound_resistance = -6
@@ -56,7 +56,7 @@
 	disable_threshold = 1
 	icon_static = null
 	icon_state = null
-	max_damage = 70
+	max_damage = 45
 	biomass = 0 //Handled in chest due to sprite funnies
 	wound_resistance = -3
 

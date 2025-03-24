@@ -303,7 +303,7 @@ GLOBAL_LIST_EMPTY(markers_signals)
 	var/mob/camera/marker_signal/marker/camera = new /mob/camera/marker_signal/marker(get_turf(src), marker)
 	marker.camera_mob = camera
 	camera.set_real_name(camera.name)
-	camera.ckey = src.ckey
+	camera.PossessByPlayer(src.ckey)
 	camera.change_psy_energy(psy_energy)
 	qdel(src)
 
@@ -345,7 +345,7 @@ GLOBAL_LIST_EMPTY(markers_signals)
 
 	var/mob/camera/marker_signal/signal = new /mob/camera/marker_signal(get_turf(src), marker)
 	signal.set_real_name(signal.name)
-	signal.ckey = src.ckey
+	signal.PossessByPlayer(src.ckey)
 	signal.change_psy_energy(psy_energy)
 	qdel(src)
 

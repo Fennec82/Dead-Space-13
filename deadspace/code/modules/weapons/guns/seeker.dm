@@ -77,7 +77,7 @@ Projectiles for the casings
 /obj/projectile/bullet/seeker
 	name ="seeker shell"
 	speed = 0.4
-	damage = 60
+	damage = 50
 	paralyze = 10
 	dismemberment = 30
 	armor_penetration = 50

@@ -179,7 +179,7 @@ Projectiles for the casings
 	name = "pulse"
 	icon = 'deadspace/icons/obj/projectiles.dmi'
 	icon_state = "pulse"
-	damage = 14
+	damage = 8
 	speed = 1
 	armor_penetration = 4 //Should be quite low I'd think, especially for standard rounds. Bullet made to shred and liquify flesh but not affect materialistic objects much.
 	shrapnel_type = null
@@ -188,13 +188,13 @@ Projectiles for the casings
 
 /obj/projectile/bullet/pulse/hv
 	icon_state = "pulse_hv"
-	damage = 15.5
+	damage = 13
 	armor_penetration = 12
 	//muzzle_type = /obj/effect/projectile/pulse/hv
 
 /obj/projectile/bullet/pulse/df
 	icon_state = "pulse_df"
-	damage = 12
+	damage = 7
 	stamina = 8
 	ricochets_max = 2
 	ricochet_incidence_leeway = 0
