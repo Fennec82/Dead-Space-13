@@ -17,7 +17,7 @@
 	if(!text)
 		return TRUE
 	..()
-	new /obj/effect/decal/cleanable/blood/writing(target_turf, text, TRUE)
+	new /obj/effect/decal/cleanable/blood/writing(target_turf, null, null,	 text, TRUE)
 	target_turf.visible_message(span_warning("Invisible fingers crudely paint something in blood on \the [target_turf]."))
 	return TRUE
 
@@ -33,7 +33,7 @@
 	var/message
 	var/creator
 
-/obj/effect/decal/cleanable/blood/writing/Initialize(mapload, text, fade_in)
+/obj/effect/decal/cleanable/blood/writing/Initialize(mapload, list/datum/pathogen/diseases, list/blood_dna, text, fade_in)
 	. = ..()
 	message = text
 	creator = usr?.ckey

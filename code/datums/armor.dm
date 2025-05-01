@@ -136,14 +136,14 @@
 /proc/armor_flag_to_strike_string(flag)
 	switch(flag)
 		if(BLUNT)
-			return "strike"
+			return "strikes"
 		if(PUNCTURE)
-			return "stab"
+			return "stabs"
 		if(SLASH)
-			return "slash"
+			return "slashes"
 		if(ACID)
 			return "acid"
 		if(FIRE)
-			return "burn"
+			return "burns"
 		else
 			return "blow"

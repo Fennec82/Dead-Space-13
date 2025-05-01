@@ -13,6 +13,8 @@
 	light_inner_range = 1
 	light_outer_range = 3
 	light_color = "#bcb10d"
+	cost = 110
+	marker_only = TRUE
 	///Type, not a reference
 	var/datum/necro_class/spawning_necromorph
 	var/biomass_spent = 0
@@ -114,12 +116,5 @@
 	available_necromorphs++
 	if((available_necromorphs+currently_active_necromorphs) < max_spawns)
 		timer_id = addtimer(CALLBACK(src, PROC_REF(add_necromorph_to_spawn)), DEFAULT_SPAWN_COOLDOWN, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
-
-/datum/action/cooldown/necro/corruption/nest
-	name = "Nest"
-	button_icon_state = "nest"
-	place_structure = /obj/structure/necromorph/nest
-	cost = 110
-	marker_only = TRUE
 
 #undef DEFAULT_SPAWN_COOLDOWN

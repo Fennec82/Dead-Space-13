@@ -8,10 +8,5 @@
 	light_outer_range = 4
 	light_color = COLOR_BRIGHT_ORANGE
 	max_integrity = 20
-
-/datum/action/cooldown/necro/corruption/lamp
-	name = "Bioluminescence"
-	button_icon_state = "bioluminescence"
-	place_structure = /obj/structure/necromorph/lamp
 	can_place_in_sight = TRUE
 	cost = 2

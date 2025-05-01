@@ -259,6 +259,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_GOOD_HEARING "good_hearing"
 /// This mob's speech is heard through walls by dead players/observers even if it has no client. Idk a better name
 #define TRAIT_IMPORTANT_SPEAKER "important_speaker"
+/// This mob automatically succeeds rolls for get_examine_result()
+#define TRAIT_BIGBRAIN "big_brain"
 
 // Stops the mob from slipping on water, or banana peels, or pretty much anything that doesn't have [GALOSHES_DONT_HELP] set
 #define TRAIT_NO_SLIP_WATER "NO_SLIP_WATER"
@@ -1000,6 +1002,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Given to items that are bodyparts attached to a mob, organs attached to a mob or inside a bodypart
 #define TRAIT_INSIDE_BODY "inside_body"
+#define TRAIT_JAUNDICE_SKIN "jaundice_skin"
 
 /// trait that prevents AI controllers from planning detached from ai_status to prevent weird state stuff.
 #define TRAIT_AI_PAUSED "TRAIT_AI_PAUSED"

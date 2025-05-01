@@ -115,6 +115,11 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 //Necros have to go here to prevent undefined errors, don't put it in deadspace folder
 #define isnecromorph(A) (istype(A, /mob/living/carbon/human/necromorph))
 
+//Necromorph signal cameras
+#define ismarkereye(A) (istype(A, /mob/camera/marker_signal))
+
+#define ismarkereyemaster(A) (istype(A, /mob/camera/marker_signal/marker))
+
 //Silicon mobs
 #define issilicon(A) (istype(A, /mob/living/silicon))
 
@@ -174,8 +179,6 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 
 //Misc mobs
 #define isobserver(A) (istype(A, /mob/dead/observer))
-
-#define ismarkereye(A) (istype(A, /mob/camera/marker_signal))
 
 #define isdead(A) (istype(A, /mob/dead))
 

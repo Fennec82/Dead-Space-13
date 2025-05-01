@@ -12,6 +12,10 @@
 	obj_flags = CAN_BE_HIT
 	/// If we are growing or decaying
 	var/state = null
+	var/can_place_in_sight = FALSE
+	var/marker_only = FALSE
+	var/cost = 0
+	var/require_wall = FALSE
 
 /obj/structure/necromorph/Initialize(mapload)
 	..()

@@ -60,7 +60,7 @@
 		necro.UnarmedAttack(target)
 	else
 		necro.UnarmedAttack(target)
-
+	return BEHAVIOR_PERFORM_COOLDOWN
 
 /datum/ai_behavior/necro_attack/finish_action(datum/ai_controller/controller, succeeded, target_key, targetting_datum_key, hiding_location_key)
 	. = ..()
@@ -86,3 +86,4 @@
 		necro.UnarmedAttack(necro.buckled)
 	if(!isturf(A) && A != null) //Am I in something?
 		necro.UnarmedAttack(A) //MICHAEL, DON'T LEAVE ME HERE!
+	return BEHAVIOR_PERFORM_COOLDOWN

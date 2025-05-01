@@ -28671,6 +28671,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "12"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/deadspace/med/white_medsolo,
 /area/station/medical/pharmacy)
 "oHg" = (

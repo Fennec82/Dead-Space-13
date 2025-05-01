@@ -1,7 +1,7 @@
 //#define CONTAINMENT_WEIGHT_UNITOLOGIST 100 //Uncomment when we have psuedo antag unitologists
 
 //What percentage of our population can become antags
-#define CONTAINMENT_ANTAG_COEFF 0.15
+#define CONTAINMENT_ANTAG_COEFF 0.10
 
 /datum/game_mode/containment
 	name = "Containment"
@@ -20,7 +20,6 @@
 
 	var/obj/structure/marker/main_marker
 	var/minimum_round_crew = 2
-	var/minimum_alive_percentage = 0.1 //0.1 = 10%
 
 /datum/game_mode/containment/New()
 	. = ..()
@@ -96,15 +95,23 @@
 	priority_announce("Thanks to the tireless efforts of our security and intelligence divisions, there are currently no credible threats to [station_name()]. All station construction projects have been authorized. Have a secure shift!", "Security Report", "", SSstation.announcer.get_rand_report_sound())
 
 /datum/game_mode/containment/check_finished(force_ending)
-	. = ..()
+	. = FALSE
+
+	if(!SSticker.setup_done)
+		return
+
+	if(GLOB.station_was_nuked) //OH GOD SOMEONE STOP THE EDF
+		return TRUE
+
 	if(force_ending)
 		return TRUE
 
 	if(main_marker?.active)
-		if(length(GLOB.joined_player_list) >= minimum_round_crew)
-			var/minimum_living_crew = ROUND_UP(length(GLOB.joined_player_list) * minimum_alive_percentage)
-			if (get_living_active_crew_on_station() < minimum_living_crew)
-				return TRUE
+		if(get_living_active_crew_on_station() == 0 && !(SSshuttle.emergency.mode == SHUTTLE_ESCAPE)) //Everyone is dead or escaped, start round end
+			return TRUE
+
+//TODO : Set up a proper round result system for necro / crew win stages
+//datum/game_mode/containment/set_round_result()
 
 /proc/get_living_active_crew_on_station()
 	. = 0
@@ -114,6 +121,12 @@
 		if(alive.client.is_afk())
 			continue
 		if(isnecromorph(alive)) //So we don't count necromorphs
+			continue
+		if(ismarkereye(alive)) //This should never happen, but through pure shenanigans it sometimes does
+			continue
+		if(isanimal_or_basicmob(alive)) //Don't include anything not strictly human
+			continue
+		if(issilicon(alive)) //Don't include silicons either
 			continue
 		var/turf/location = get_turf(alive)
 		if(!location || !SSmapping.level_trait(location.z, ZTRAIT_STATION))

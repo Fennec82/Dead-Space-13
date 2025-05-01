@@ -217,7 +217,7 @@
 		var/delta = world.time - last_dead_time
 		var/new_timeofdeath = owner.timeofdeath + delta
 		owner.timeofdeath = new_timeofdeath
-		owner.tod = stationtime2text(reference_time=new_timeofdeath)
+		owner.timeofdeath_as_ingame = stationtime2text(reference_time=new_timeofdeath)
 		last_dead_time = null
 	if(owner.stat == DEAD)
 		last_dead_time = world.time
@@ -552,7 +552,7 @@
 		H.remove_status_effect(/datum/status_effect/neck_slice)
 
 	if(prob(10))
-		H.emote(pick("gasp", "gag", "choke"))
+		H.emote(pick(/datum/emote/living/carbon/gasp_air, "gag", "choke"))
 
 /mob/living/proc/apply_necropolis_curse(set_curse)
 	var/datum/status_effect/necropolis_curse/C = has_status_effect(/datum/status_effect/necropolis_curse)

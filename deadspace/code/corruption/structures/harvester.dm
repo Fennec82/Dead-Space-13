@@ -9,6 +9,8 @@
 	base_pixel_x = -16
 	pixel_y = -8
 	base_pixel_y = -8
+	cost = 50
+	marker_only = TRUE
 	var/active = FALSE
 	var/biomass_per_tick = 0
 	var/list/controlled_atoms
@@ -106,10 +108,3 @@
 		controlled.remove_filter("harvester_glow")
 
 #undef HARVESTER_CONTROL_RANGE
-
-/datum/action/cooldown/necro/corruption/harvester
-	name = "Harvester"
-	button_icon_state = "harvester"
-	place_structure = /obj/structure/necromorph/harvester
-	cost = 50
-	marker_only = TRUE

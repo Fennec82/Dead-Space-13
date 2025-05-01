@@ -7,36 +7,19 @@
 /area/shuttle/supply)
 "e" = (
 /obj/machinery/light/directional/north,
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/obj/effect/turf_decal/caution{
-	dir = 4
-	},
 /turf/open/floor/deadspace/heavy,
 /area/shuttle/supply)
 "f" = (
-/obj/machinery/door/unpowered/shuttle,
+/obj/machinery/door/airlock/shuttle/glass,
 /turf/open/floor/deadspace/mono,
 /area/shuttle/supply)
 "g" = (
-/obj/machinery/light/directional/north,
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/obj/effect/turf_decal/caution{
-	dir = 8
-	},
-/turf/open/floor/deadspace/heavy,
+/obj/structure/window/reinforced/shuttle,
+/obj/structure/grille,
+/turf/open/floor/deadspace/mono,
 /area/shuttle/supply)
 "r" = (
 /obj/machinery/light/directional/south,
-/obj/effect/turf_decal/stripes{
-	dir = 4
-	},
-/obj/effect/turf_decal/caution{
-	dir = 8
-	},
 /turf/open/floor/deadspace/heavy,
 /area/shuttle/supply)
 "J" = (
@@ -48,19 +31,9 @@
 	},
 /turf/open/floor/deadspace/heavy,
 /area/shuttle/supply)
-"K" = (
-/obj/machinery/light/directional/south,
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/obj/effect/turf_decal/caution{
-	dir = 4
-	},
-/turf/open/floor/deadspace/heavy,
-/area/shuttle/supply)
 "M" = (
-/obj/machinery/door/unpowered/shuttle,
 /obj/docking_port/mobile/supply,
+/obj/machinery/door/airlock/shuttle/glass,
 /turf/open/floor/deadspace/mono,
 /area/shuttle/supply)
 "Q" = (
@@ -75,20 +48,20 @@
 
 (1,1,1) = {"
 c
+c
+c
 f
-f
-f
-f
-f
+c
+c
 c
 "}
 (2,1,1) = {"
 c
 e
+a
 Q
-Q
-Q
-K
+a
+r
 c
 "}
 (3,1,1) = {"
@@ -101,13 +74,13 @@ a
 c
 "}
 (4,1,1) = {"
-c
+g
 a
 a
 a
 a
 a
-c
+g
 "}
 (5,1,1) = {"
 c
@@ -120,19 +93,19 @@ c
 "}
 (6,1,1) = {"
 c
-g
+e
+a
 J
-J
-J
+a
 r
 c
 "}
 (7,1,1) = {"
 c
-f
-f
+c
+c
 M
-f
-f
+c
+c
 c
 "}

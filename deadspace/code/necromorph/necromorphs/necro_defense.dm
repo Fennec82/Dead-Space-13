@@ -1,8 +1,7 @@
 //The primary attack, which goes directly into attack_necromorph
-/mob/living/carbon/human/necromorph/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
-	A.attack_necromorph(src, modifiers)
-	changeNext_move(CLICK_CD_MELEE)
-	return
+/mob/living/carbon/human/necromorph/resolve_unarmed_attack(atom/attack_target, list/modifiers)
+	attack_target.attack_necromorph(src, modifiers)
+
 
 //The proc and backup rolled up in one.
 /atom/proc/attack_necromorph(mob/living/carbon/human/necromorph/user, list/modifiers, dealt_damage)
@@ -19,7 +18,13 @@
 	playsound(loc, 'sound/weapons/slash.ogg', 50, TRUE, -1)
 	user.play_necro_sound(SOUND_ATTACK, VOLUME_MID, 1, 3)
 	var/zone_attacked = ran_zone(user.zone_selected)
-	var/attack_flag = pick(SLASH, PUNCTURE) //Necros vary between slashing and stabbing
+	var/attack_flag
+	switch(rand(0,10))
+		if(0 to 9)
+			attack_flag = SLASH
+		if(10)
+			attack_flag = PUNCTURE
+
 	var/armor_block = run_armor_check(zone_attacked, attack_flag)
 	visible_message(span_danger("[user.name] [armor_flag_to_strike_string(attack_flag)] [src]!"), \
 	span_userdanger("[user.name] [armor_flag_to_strike_string(attack_flag)] you!"), span_hear("You hear a [armor_flag_to_strike_string(attack_flag)] of the flesh!"), COMBAT_MESSAGE_RANGE, user)
@@ -37,8 +42,6 @@
 		return FALSE
 
 	user.do_attack_animation(src, user.attack_effect)
-	if (w_uniform)
-		w_uniform.add_fingerprint(user)
 	dealt_damage = prob(90) ? (dealt_damage || rand(user.melee_damage_lower, user.melee_damage_upper)) : 0
 	if(!dealt_damage)
 		playsound(loc, 'sound/weapons/slashmiss.ogg', 50, TRUE, -1)
@@ -47,10 +50,17 @@
 		span_userdanger("[user] lunges at you!"), span_hear("You hear a swoosh!"), null, user)
 		to_chat(user, span_danger("You lunge at [src]!"))
 		return FALSE
+
 	var/obj/item/bodypart/affecting = get_bodypart(ran_zone(user.zone_selected))
-	if(!affecting)
+	if(!affecting) //If we can't find the body part we just default to attacking the chest
 		affecting = get_bodypart(BODY_ZONE_CHEST)
-	var/attack_flag = pick(SLASH, PUNCTURE) //Necros vary between slashing and stabbing
+	var/attack_flag
+	switch(rand(0,10))
+		if(0 to 9)
+			attack_flag = SLASH
+		if(10)
+			attack_flag = PUNCTURE
+
 	var/armor_block = run_armor_check(affecting, attack_flag)
 	playsound(loc, 'sound/weapons/slice.ogg', 25, TRUE, -1)
 	visible_message(span_danger("[user.name] [armor_flag_to_strike_string(attack_flag)] [src]!"), \

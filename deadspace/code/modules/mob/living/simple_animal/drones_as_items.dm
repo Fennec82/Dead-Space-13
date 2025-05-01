@@ -7,7 +7,7 @@
 	layer = BELOW_MOB_LAYER
 	density = FALSE
 	move_resist = 1000
-	mob_name = "Scavanger bot"
+	mob_name = "Scavenger bot"
 	///Type of drone that will be spawned
 	mob_type = /mob/living/simple_animal/drone/classic/scavbot
 	role_ban = ROLE_DRONE
@@ -15,7 +15,7 @@
 	prompt_name = "Scavenger bot"
 	you_are_text = "You are a scavenger bot."
 	flavour_text = "You are a corporate owned scavenger bot, you've been tasked with the scavanging of the station or ship."
-	important_text = "You MUST read and follow your laws carefully."
+	important_text = "READ YOUR LAWS."
 	spawner_job_path = /datum/job/maintenance_drone
 
 /obj/effect/mob_spawn/ghost_role/drone/scavbot/Initialize(mapload)

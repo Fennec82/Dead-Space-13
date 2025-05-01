@@ -143,7 +143,7 @@
 	return null
 
 /datum/game_mode/proc/check_finished() //to be called by SSticker
-	SHOULD_CALL_PARENT(TRUE)
+	//SHOULD_CALL_PARENT(TRUE)
 	. = FALSE
 
 	if(!SSticker.setup_done)

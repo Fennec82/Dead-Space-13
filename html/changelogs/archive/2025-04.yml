@@ -1,0 +1,25 @@
+2025-04-16:
+  mogeoko:
+  - code_imp: Changed "minigrowth" icon_state to "minigrowth1"
+  - code_imp: Added a safety check to prevent sending marker eyes to nowhere in the
+      /DblClickOn proc
+  - bugfix: Hopper's AI attack speed has been given it's cooldown
+  - qol: Biohazard lockdown sound is now played directly to the players
+  - qol: Root and Branch now have different icons
+  - qol: Changed all building skills to a single list skill
+2025-04-17:
+  MisterGrimm:
+  - rscdel: Radstorm removed from Supermatter Delam
+  - qol: The CMO's tranq rifle now acts like a normal bolt weapon
+  - qol: Cargo shuttle airlocks replaced with automatics, gave the shuttle windows
+      too
+  - qol: Containment round end only occurs when all humans are dead, this is the foundation
+      for multi-shuttle escapes
+  - balance: Tweaked scav drone laws to make a little more sense
+  - balance: Cyst projectile damage reduced from 45 to 25
+  - balance: Necros now have a slash/puncture chance of 90/10, from 50/50
+  - bugfix: Necro equip bitflag fixed
+  - bugfix: Sense now makes and maintains it's own list, rather then pulling from
+      potentially stale lists
+  - spellcheck: Armor Flag Strikes are now plural, will have to check for future grammar
+      issues because of this

@@ -4,7 +4,7 @@
 /obj/structure/necromorph/node
 	name = "growth"
 	icon = 'deadspace/icons/effects/corruption.dmi'
-	icon_state = "minigrowth"
+	icon_state = "minigrowth1"
 	var/corruption_node_type = /datum/corruption_node
 
 /obj/structure/necromorph/node/Initialize(mapload, obj/structure/marker/new_master)

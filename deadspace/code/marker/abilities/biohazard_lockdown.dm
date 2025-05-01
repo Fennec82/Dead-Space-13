@@ -21,7 +21,10 @@
 	var/area/alarmed = get_area(target)
 	alarmed.biohazardlockdown(target)
 
-	playsound(target, 'deadspace/sound/effects/biohazard_alarm.ogg', 50, TRUE, 5)
+	for(var/mob/living/character in alarmed)
+		if(character.client)
+			character.playsound_local(get_turf(character), 'deadspace/sound/effects/biohazard_alarm.ogg', 50, FALSE)
+
 	for(var/obj/machinery/door/airlock/door in alarmed)
 		addtimer(CALLBACK(door, TYPE_PROC_REF(/obj/machinery/door/airlock, unbolt)), duration)
 	addtimer(CALLBACK(alarmed, TYPE_PROC_REF(/area, communicate_fire_alert), FIRE_CLEAR), duration)

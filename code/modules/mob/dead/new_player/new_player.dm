@@ -76,10 +76,11 @@
 		stack_trace("There's no freaking observer landmark available on this map or you're making observers before the map is initialised")
 	observer.PossessByPlayer(key)
 	observer.client = client
-	observer.restore_ghost_appearance()
+
 	if(observer.client && observer.client.prefs)
 		observer.set_real_name(observer.client.prefs.read_preference(/datum/preference/name/real_name))
 		observer.client.init_verbs()
+
 	observer.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 	deadchat_broadcast(" has observed.", "<b>[observer.real_name]</b>", follow_target = observer, turf_target = get_turf(observer), message_type = DEADCHAT_DEATHRATTLE)
 	QDEL_NULL(mind)
@@ -254,15 +255,14 @@
 
 
 /mob/dead/new_player/proc/transfer_character()
-	. = new_character
-	if(!.)
-		return
 	new_character.PossessByPlayer(key)
 	new_character.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 	new_character.client?.show_location_blurb()
+
 	var/area/joined_area = get_area(new_character.loc)
 	if(joined_area)
 		joined_area.on_joining_game(new_character)
+
 	new_character = null
 	qdel(src)
 

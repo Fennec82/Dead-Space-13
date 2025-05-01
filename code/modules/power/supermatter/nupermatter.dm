@@ -258,9 +258,6 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter)
 	explosion(TS, explosion_power/2, explosion_power, explosion_power * 2, explosion_power * 4, 1)
 	moveToNullspace()
 
-	// Effect 4: Radiation, weakening to all mobs on Z level
-	SSweather.run_weather(/datum/weather/rad_storm, affected_z, TRUE)
-
 	for(var/mob/living/mob in GLOB.mob_living_list)
 		CHECK_TICK
 		var/turf/TM = get_turf(mob)

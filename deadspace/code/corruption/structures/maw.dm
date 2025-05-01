@@ -12,6 +12,8 @@
 	can_buckle = TRUE
 	max_buckled_mobs = INFINITY
 	buckle_lying = 270
+	cost = 40
+	marker_only = TRUE
 	// Biomass that will be slowly given to the marker
 	var/processing_biomass = 0
 
@@ -208,12 +210,5 @@
 	if(!length(buckled_mobs))
 		update_icon(UPDATE_ICON_STATE)
 
-/datum/action/cooldown/necro/corruption/maw
-	name = "maw"
-	desc = "It acts as a corpose disposal, slowly devouring any corpses put inside. Gives 20% extra biomass for humans, can devour normal mobs, and can recycle necromorphs."
-	button_icon_state = "maw"
-	place_structure = /obj/structure/necromorph/maw
-	cost = 40
-	marker_only = TRUE
 
 #undef MAW_DAMAGE_PER_SECOND

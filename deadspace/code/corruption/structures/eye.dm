@@ -10,6 +10,8 @@
 	light_outer_range = 2
 	light_color = COLOR_BRIGHT_ORANGE
 	max_integrity = 30
+	can_place_in_sight = TRUE
+	cost = 15
 	var/obj/structure/marker/marker
 	var/last_sighting
 
@@ -51,13 +53,6 @@
 		var/obj/structure/necromorph/eye/eye = locate(href_list["eye_ref"]) in marker.corruption_eyes
 		if(eye)
 			abstract_move(get_turf(eye))
-
-/datum/action/cooldown/necro/corruption/eye
-	name = "Eye"
-	button_icon_state = "eye"
-	place_structure = /obj/structure/necromorph/eye
-	can_place_in_sight = TRUE
-	cost = 15
 
 #undef MINIMUM_NOTIFY_DELAY
 

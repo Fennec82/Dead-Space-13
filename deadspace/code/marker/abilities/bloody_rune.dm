@@ -14,7 +14,7 @@
 		to_chat(owner, span_warning("Another bloody rune is too close!"))
 		return
 	..()
-	new /obj/effect/decal/cleanable/necro_rune(target_turf, null, RUNE_COLOR_MEDIUMRED, TRUE)
+	new /obj/effect/decal/cleanable/necro_rune(target_turf, null, null, RUNE_COLOR_MEDIUMRED, TRUE)
 	return TRUE
 
 //Initialized in make_datum_references_lists
@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(necro_runes)
 	mergeable_decal = FALSE
 	var/used_overlays = ""
 
-/obj/effect/decal/cleanable/necro_rune/Initialize(mapload, colour, fade_in)
+/obj/effect/decal/cleanable/necro_rune/Initialize(mapload, list/datum/pathogen/diseases, list/blood_dna, colour, fade_in)
 	. = ..()
 	icon_state = "rune-[rand(1, 5)]"
 	if(colour)
@@ -40,10 +40,6 @@ GLOBAL_LIST_EMPTY(necro_runes)
 	if(fade_in)
 		alpha = 0
 		animate(src, alpha = 255, time = 1 SECONDS, flags = ANIMATION_PARALLEL)
-
-//If we don't do this the rune will try to get DNA, bad things happen when this is done
-/obj/effect/decal/cleanable/necro_rune/add_blood_DNA(list/blood_dna)
-	return FALSE
 
 /obj/effect/decal/cleanable/necro_rune/NeverShouldHaveComeHere(turf/T)
 	return T.density || isgroundlessturf(T)

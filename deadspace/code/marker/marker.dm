@@ -30,7 +30,6 @@
 		signal.show_message(span_userdanger("You feel like your connection with the Marker breaks!"))
 		qdel(signal)
 	marker_signals = null
-	QDEL_LIST(unwhole)
 	QDEL_NULL(markernet)
 	QDEL_NULL(soundloop)
 	.=..()
@@ -89,11 +88,6 @@
 	necromorphs -= necro
 	necro.marker = null
 
-/obj/structure/marker/proc/sense_survivors()
-	for(var/mob/living/survivors as anything in GLOB.player_list) //We look for any mob with a client
-		if(survivors.stat != DEAD && !isnecromorph(survivors) && is_station_level(survivors.loc?.z))
-			unwhole |= survivors //Using |= prevents duplicates in the list, but is a little slower
-
 /obj/structure/marker/proc/activate()
 	if(active)
 		return
@@ -101,18 +95,14 @@
 	change_marker_biomass(250) //Marker given a biomass injection, enough for a small team and some growing
 	change_signal_biomass(50) //Signals given biomass injection for general spreading
 	add_biomass_source(/datum/biomass_source/baseline, src) //Base income for marker
-	sense_survivors() //Checks for survivors for sense
 	for(var/mob/camera/marker_signal/eye as anything in marker_signals)
 		for(var/datum/action/cooldown/necro/psy/ability as anything in eye.abilities)
 			if((ability.marker_flags & SIGNAL_ABILITY_PRE_ACTIVATION))
 				ability.Remove(eye)
 			if((ability.marker_flags & SIGNAL_ABILITY_POST_ACTIVATION))
 				ability.Grant(eye)
-		for(var/datum/action/cooldown/necro/corruption/ability as anything in subtypesof(/datum/action/cooldown/necro/corruption))
-			if(initial(ability.marker_only) && !istype(eye, /mob/camera/marker_signal/marker))
-				continue
-			ability = new ability(eye)
-			ability.Grant(eye)
+		var/datum/action/cooldown/necro/corruption/ability = new /datum/action/cooldown/necro/corruption(eye)
+		ability.Grant(eye)
 	new /datum/corruption_node/atom/marker(src, src)
 	update_icon(UPDATE_ICON_STATE)
 	light_power = 1
